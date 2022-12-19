@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+    <h1>Formulaire d'inscription</h1>
+
+    {{ form_start(registrationForm, {
+        'attr':{
+            'class':'registration'
+        }
+    }) }}
+    <div>
+        <label for="inputNom">Nom</label>
+        {{ form_widget(registrationForm.name, {
+            'attr':{
+                'class':'form-control',
+                'id':'inputNom',
+            }
+            }) }}
+    </div>
+    <div>
+        <label for="inputPrenom">Prénom</label>    
+        {{ form_widget(registrationForm.firstname, {
+            'attr':{
+                'class':'form-control',
+                'id':'inputPrenom',
+            }
+        }) }}
+    </div>
+    <div>
+        <label for="inputAdresse">Adresse</label>
+        {{ form_widget(registrationForm.address, {
+            'attr':{
+                'class':'form-control',
+                'id':'inputAdresse',
+            }
+        }) }}
+    </div>
+    <div>
+        <label for='inputcodePostal'>Code Postal</label>
+        {{ form_widget(registrationForm.zipcode, {
+            'attr':{
+                'class':'form-control',
+                'id':'inputcodePostal',
+            }
+        }) }}
+    </div>
+    <div>
+        <label for='inputVille'>Ville</label>    
+        {{ form_widget(registrationForm.city, {
+            'attr':{
+                'class':'form-control',
+                'id':'inputVille',
+            }
+        }) }}
+    </div>
+    <div>
+        <label for='inputEmail'>Email</label>    
+        {{ form_widget(registrationForm.email, {
+            'attr':{
+                'class':'form-control',
+                'id':'inputEmail',
+            }
+        }) }}
+    </div>
+    <div>
+        <label for='inputPassword'>Mot de passe</label>    
+        {{ form_widget(registrationForm.plainPassword, {
+            'attr':{
+                'class':'form-control',
+                'id':'inputPassword',
+            }
+        }) }}
+    </div>
+    <div>
+        <label for='inputAgreeterms'>Accepter les conditions</label>    
+        {{ form_widget(registrationForm.agreeTerms) }}
+    </div>
+        <button type="submit" class="btn">Valider</button>
+    {{ form_end(registrationForm) }}
+{% endblock %}

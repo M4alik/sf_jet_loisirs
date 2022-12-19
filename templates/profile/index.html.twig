@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bienvenue sur votre page profil{% endblock %}
+
+{% block body %}
+<div class="card" style="width: 18rem;">
+  <img src="{{ asset('images/logo_profil.png') }}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">Vos information</h5>
+    <p class="card-text">Nom : {{app.user.name|capitalize }}</p>
+    <p class="card-text">Prénom : {{app.user.firstname|capitalize }}</p>
+    <p class="card-text">Email : {{app.user.email|capitalize }}</p>
+
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
+{% endblock %}
