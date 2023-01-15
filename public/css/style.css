@@ -1,8 +1,53 @@
 body{
-    background: whitesmoke;
-    width: 80%;
+    margin: 0;
+}
+
+nav{
+    position: sticky;
+    z-index: 2;
+    width: 100vw;
+}
+
+
+/* HEADER */
+
+.imageHeader{
+    height: 70vh;
+    background: url('../images/Photo_jet_drone.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-attachment: fixed;
+
+}
+section{
+    z-index: 1;
+    background-color: rgb(255, 255, 255);
+    position: relative;
+
+}
+.imageHeader div{
+    color: white;
+    position: absolute;
+    top: 300px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.imageHeader div h1 {
+    z-index: 3;
+    font-size: 100px;
+}
+.imageHeader div h3 {
+    font-size: 70px;
+}
+.card {
+    transition: 0.4s;
     margin: auto;
 }
-#demo{
-    background: whitesmoke;
+.card:hover{
+    transform: scale(1.02);
+    -webkit-box-shadow: 0px 0px 26px 15px rgba(0,0,0,0.22); 
+    box-shadow: 0px 0px 26px 15px rgba(0,0,0,0.22);
+
 }

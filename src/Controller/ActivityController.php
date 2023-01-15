@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Activity;
 use App\Form\ActivityType;
+use App\Service\FileUploader;
 use App\Repository\ActivityRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -30,13 +31,21 @@ class ActivityController extends AbstractController
     /**
      * @Route("/new", name="app_activity_new", methods={"GET", "POST"})
      */
-    public function new(Request $request, ActivityRepository $activityRepository): Response
+    public function new(Request $request, ActivityRepository $activityRepository, FileUploader $fileUploader): Response
     {
         $activity = new Activity();
         $form = $this->createForm(ActivityType::class, $activity);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            // on récupère le fichier présent dans le formulaire
+            $picture = $form->get('picture')->getData();
+            // si le champs picture est renseigné (si $picture existe)
+            if($picture){
+                // on récupère le nom du fichier téléversé en même temps qu'il est placé dans le dossier public/uploads/images/
+                $fileName = $fileUploader->upload($picture);
+                // on renseigne la propriété picture de l'article avec ce nom de fichier.
+                $activity->setPicture($fileName);}
             $activity->setAuthor($this->getUser());
             $activityRepository->add($activity, true);
 

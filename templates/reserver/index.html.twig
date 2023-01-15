@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Activity index{% endblock %}
+{% block title %}Hello ReserverController!{% endblock %}
 
 {% block body %}
-    <h1>Activité</h1>
+    <h1>Choisissez votre activité</h1>
 
     <table class="table">
         <thead>
@@ -23,8 +23,7 @@
                 <td>{{ activity.description }}</td>
                 {# <td>{{ activity.status ? 'Yes' : 'No' }}</td> #}
                 <td>
-                    <a href="{{ path('app_activity_show', {'id': activity.id}) }}">voir</a>
-                    <a href="{{ path('app_activity_edit', {'id': activity.id}) }}">editer</a>
+                    <a href="{{ path('app_reserver_planning', {'activity': activity.id}) }}">Choisir</a>
                 </td>
             </tr>
         {% else %}
@@ -35,5 +34,4 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_activity_new') }}">Crée nouvelle activité</a>
 {% endblock %}

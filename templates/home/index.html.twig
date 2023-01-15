@@ -1,27 +1,38 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}Jet-loisirs{% endblock %}
 
 {% block body %}
-<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="{{ asset('images/Photo_jet_drone.png') }}" class="d-block w-100" alt="...">
-    </div>
-    <div class="carousel-item">
-      <img src="{{ asset('images/Bouée_tractée.png') }}" class="d-block w-100" alt="...">
-    </div>
-    <div class="carousel-item">
-      <img src="{{ asset('images/rando_jetski.png') }}" class="d-block w-100" alt="...">
+<div class="imageHeader">
+  <div id="textHeader">
+    <h1>Jet Loisirs</h1>
+    <h3>Bienvenue</h3>
+  </div>
+</div>
+
+<section>
+  <div class="container text-center mt-5 mb-4">
+    <h3>Decouvrez l'ensemble de nos activités</h3>
+  </div>
+  <div class="container">
+    <div class="row">
+      {% for activity in activities %}
+      <div class="col-6 mt-3">
+        <div class="card mb-3 h-100" style="width: 35vw;">
+          <img src="{{ asset('images/' ~ activity.picture) }}" style="height: 400px;" class="card-img-top w-100" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">{{ activity.name }}</h5>
+              <p class="card-text">{{ activity.description }}</p>
+                <div class="text-end">
+                  <a href="{{ path('app_reserver_planning', {'activity': activity.id}) }}" class="btn btn-primary">Reserver</a>
+                </div>
+            </div>
+        </div>
+      </div>
+      {% endfor %}
     </div>
   </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
-</div>
+</section>
+
+
 {% endblock %}

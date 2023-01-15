@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Creneau{% endblock %}
+
+{% block body %}
+    <h1>Confirmer Creneau</h1>
+    {% if(creneau.status == false) %}
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <button class="btn">{{ button_label|default('Save') }}</button>
+    {{ form_end(form) }}
+    {% else %}
+    <h3>Ce créneau est déja réservé</h3>
+    {% endif %}
+
+    <a href="{{ path('app_reserver_creneau', {'planning': creneau.planning.id}) }}">Retour aux creneaux</a>
+{% endblock %}

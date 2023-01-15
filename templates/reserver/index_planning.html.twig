@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Planning index{% endblock %}
+{% block title %}Hello ReserverController!{% endblock %}
 
 {% block body %}
-    <h1>Planning index</h1>
+    <h1>Planning</h1>
 
     <table class="table">
         <thead>
@@ -13,26 +13,23 @@
                 <th>Nb_jours</th>
                 <th>Duree_crenau</th>
                 <th>Duree_journee</th>
-                <th>Statut</th>
                 <th>actions</th>
             </tr>
         </thead>
         <tbody>
         {% for planning in plannings %}
+        {% if planning.status == true %}
             <tr>
                 <td>{{ planning.id }}</td>
-                <td>{{ planning.dateDebut ? planning.dateDebut|date('d-m-Y H:i:s') : '' }}</td>
+                <td>{{ planning.dateDebut ? planning.dateDebut|date('d / m / Y H:i:s') : '' }}</td>
                 <td>{{ planning.nbJours }}</td>
                 <td>{{ planning.dureeCrenau }}</td>
                 <td>{{ planning.dureeJournee }}</td>
-                <td>{{ planning.status ? "activé" : "désactivé" }}</td>
                 <td>
-                    <a href="{{ path('app_planning_show', {'id': planning.id}) }}">show</a>
-                    <a href="{{ path('app_planning_edit', {'id': planning.id}) }}">edit</a>
-                    <a href="{{ path('app_planning_change_status', {'id': planning.id}) }}">{{ planning.status ? "désactiver" : "activer" }}</a>
-
+                    <a href="{{ path('app_reserver_creneau', {'planning': planning.id}) }}">Choisir</a>
                 </td>
             </tr>
+        {% endif %}
         {% else %}
             <tr>
                 <td colspan="6">no records found</td>
@@ -41,5 +38,4 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_planning_new') }}">Create new</a>
 {% endblock %}

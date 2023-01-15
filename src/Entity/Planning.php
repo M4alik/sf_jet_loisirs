@@ -50,6 +50,13 @@ class Planning
      */
     private $creneaux;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $status;
+
+
+
     public function __construct()
     {
         $this->creneaus = new ArrayCollection();
@@ -151,4 +158,18 @@ class Planning
 
         return $this;
     }
+
+    public function isStatus(): ?bool
+    {
+        return $this->status;
+    }
+
+    public function setStatus(bool $status): self
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+
 }

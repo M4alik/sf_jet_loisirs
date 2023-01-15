@@ -22,6 +22,7 @@ class PlanningType extends AbstractType
                 'class' => Activity::class,
                 'choice_label' => 'name',
             ])
+            ->add('status')
         ;
     }
 
