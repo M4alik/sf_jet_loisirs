@@ -29,6 +29,7 @@ class ReserverController extends AbstractController
     }
 
     #[Route('/activity/{activity}/choisir_planning', name: 'app_reserver_planning')]
+    #[IsGranted('ROLE_USER')]
     public function index_planning(Activity $activity, PlanningRepository $planningRepository): Response
     {
         return $this->render('reserver/index_planning.html.twig', [
@@ -39,6 +40,7 @@ class ReserverController extends AbstractController
     //todo prevoir un controller qui va afficher les creneaux reliés au planning choisi : url = planning/{planning}/choisir_creneau et le template affichera la liste des creneau avec l'action choisir
     
     #[Route('/planning/{planning}/choisir_creneau', name: 'app_reserver_creneau')]
+    #[IsGranted('ROLE_USER')]
     public function index_creneau(Planning $planning): Response
     {
         return $this->render('reserver/index_creneaux.html.twig', [

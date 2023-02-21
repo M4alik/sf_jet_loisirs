@@ -3,14 +3,16 @@
 {% block title %}Bienvenue sur votre page profil{% endblock %}
 
 {% block body %}
-<div class="card" style="width: 18rem;">
-  <img src="{{ asset('images/logo_profil.png') }}" class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">Vos information</h5>
-    <p class="card-text">Nom : {{app.user.name|capitalize }}</p>
-    <p class="card-text">Prénom : {{app.user.firstname|capitalize }}</p>
-    <p class="card-text">Email : {{app.user.email|capitalize }}</p>
 
+<div class="profil">
+  <div >
+    <img src="{{ asset('images/logo_profil.png') }}">
+    <p>Nom : {{app.user.name|capitalize }}</p>
+    <p>Prénom : {{app.user.firstname|capitalize }}</p>
+  </div>
+  <div>
+    <h5>Vos information</h5>
+    <p>Email</p> <p>{{app.user.email|capitalize }}</p>
     <a href="{{ path('app_mes_creneaux') }}" class="btn btn-primary">Voir mes creneaux</a>
   </div>
 </div>
